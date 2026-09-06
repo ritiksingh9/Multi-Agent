@@ -82,6 +82,19 @@ Or run the command-line workflow:
 python main.py
 ```
 
+## Deploy on Render
+
+1. Push this project to GitHub, including `requirements.txt` and `render.yaml`. Do not commit `.env`.
+2. In Render, choose **New > Blueprint**, connect the GitHub repository, and deploy the `render.yaml` blueprint.
+3. In the created web service, add `GROQ_API_KEY`, `TAVILY_API_KEY`, and `AVIATIONSTACK_API_KEY` under **Environment**. `DATABASE_URL` is connected automatically to the Render PostgreSQL database.
+4. Redeploy, then open the generated `onrender.com` URL.
+
+The web service starts with:
+
+```bash
+streamlit run frontend.py --server.address 0.0.0.0 --server.port $PORT
+```
+
 Enter a request such as:
 
 ```text
